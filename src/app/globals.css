@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* PC GameFi Brand Colors */
+  --primary-green: #7FF252;
+  --secondary-green: #6FD638;
+  --background-cream: #E8E5D5;
+  --dark-charcoal: #1A1C1E;
+  --text-black: #000000;
+  --text-white: #FFFFFF;
+
+  /* Status Colors */
+  --status-live: #7FF252;
+  --status-upcoming: #FFA500;
+  --status-ended: #9CA3AF;
+}
+
+@theme inline {
+  --color-primary: var(--primary-green);
+  --color-secondary: var(--secondary-green);
+  --color-background: var(--background-cream);
+  --color-dark: var(--dark-charcoal);
+  --font-sans: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--background-cream);
+  color: var(--text-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display Font Class */
+.display-font {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E8E5D5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7FF252;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6FD638;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Line Clamp Utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
