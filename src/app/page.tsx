@@ -15,18 +15,18 @@ export default function Home() {
   const featuredProjects = [...LIVE_PROJECTS, ...UPCOMING_PROJECTS].slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-[#E8E5D5]">
+    <main className="min-h-screen bg-background">
       <Navbar />
       <Hero />
       <StatsBar />
 
       {/* Featured Projects Section */}
-      <section className="py-20 bg-[#E8E5D5]">
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold display-font">Featured Projects</h2>
-              <p className="text-gray-600 mt-2">Discover the latest IGOs and investment opportunities</p>
+              <h2 className="text-3xl md:text-4xl font-bold display-font text-foreground">Featured Projects</h2>
+              <p className="text-muted-foreground mt-2">Discover the latest IGOs and investment opportunities</p>
             </div>
             <Link href="/projects">
               <Button variant="outline" className="hidden md:flex">
@@ -55,50 +55,50 @@ export default function Home() {
       <HowToJoin />
 
       {/* Completed Sales Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-12">
-            <Trophy className="h-8 w-8 text-[#7FF252]" />
-            <h2 className="text-3xl md:text-4xl font-bold display-font">Completed Sales</h2>
+            <Trophy className="h-8 w-8 text-primary" />
+            <h2 className="text-3xl md:text-4xl font-bold display-font text-card-foreground">Completed Sales</h2>
           </div>
 
           {/* Desktop Table */}
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-4 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">Project</th>
-                  <th className="text-left py-4 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">Category</th>
-                  <th className="text-right py-4 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">Total Raised</th>
-                  <th className="text-right py-4 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">Participants</th>
-                  <th className="text-right py-4 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">ATH ROI</th>
+                <tr className="border-b border-border">
+                  <th className="text-left py-4 px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">Project</th>
+                  <th className="text-left py-4 px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">Category</th>
+                  <th className="text-right py-4 px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">Total Raised</th>
+                  <th className="text-right py-4 px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">Participants</th>
+                  <th className="text-right py-4 px-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">ATH ROI</th>
                 </tr>
               </thead>
               <tbody>
                 {COMPLETED_PROJECTS.map((project) => (
-                  <tr key={project.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                  <tr key={project.id} className="border-b border-border hover:bg-muted/50 transition-colors">
                     <td className="py-4 px-4">
                       <Link href={`/projects/${project.id}`} className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-200">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-muted">
                           <img src={project.imageUrl} alt={project.name} className="w-full h-full object-cover" />
                         </div>
                         <div>
-                          <span className="font-bold text-gray-900 group-hover:text-[#7FF252] transition-colors">{project.name}</span>
-                          <span className="block text-xs text-gray-500 font-mono">${project.ticker}</span>
+                          <span className="font-bold text-card-foreground group-hover:text-primary transition-colors">{project.name}</span>
+                          <span className="block text-xs text-muted-foreground font-mono">${project.ticker}</span>
                         </div>
                       </Link>
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex gap-1 flex-wrap">
                         {project.category.slice(0, 2).map(cat => (
-                          <span key={cat} className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">{cat}</span>
+                          <span key={cat} className="text-xs bg-muted px-2 py-1 rounded text-muted-foreground">{cat}</span>
                         ))}
                       </div>
                     </td>
-                    <td className="py-4 px-4 text-right font-mono font-semibold">${project.totalRaise.toLocaleString()}</td>
-                    <td className="py-4 px-4 text-right text-gray-600">{project.participants.toLocaleString()}</td>
+                    <td className="py-4 px-4 text-right font-mono font-semibold text-card-foreground">${project.totalRaise.toLocaleString()}</td>
+                    <td className="py-4 px-4 text-right text-muted-foreground">{project.participants.toLocaleString()}</td>
                     <td className="py-4 px-4 text-right">
-                      <span className="text-[#7FF252] font-bold font-mono">{project.roi}</span>
+                      <span className="text-primary font-bold font-mono">{project.roi}</span>
                     </td>
                   </tr>
                 ))}
@@ -110,23 +110,23 @@ export default function Home() {
           <div className="md:hidden space-y-4">
             {COMPLETED_PROJECTS.map((project) => (
               <Link key={project.id} href={`/projects/${project.id}`}>
-                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 hover:border-[#7FF252] transition-colors">
+                <div className="bg-muted rounded-xl p-4 border border-border hover:border-primary transition-colors">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-200">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-muted">
                       <img src={project.imageUrl} alt={project.name} className="w-full h-full object-cover" />
                     </div>
                     <div>
-                      <span className="font-bold text-gray-900">{project.name}</span>
-                      <span className="block text-xs text-gray-500 font-mono">${project.ticker}</span>
+                      <span className="font-bold text-foreground">{project.name}</span>
+                      <span className="block text-xs text-muted-foreground font-mono">${project.ticker}</span>
                     </div>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Raised:</span>
-                    <span className="font-semibold">${project.totalRaise.toLocaleString()}</span>
+                    <span className="text-muted-foreground">Raised:</span>
+                    <span className="font-semibold text-foreground">${project.totalRaise.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-sm mt-1">
-                    <span className="text-gray-500">ATH ROI:</span>
-                    <span className="font-bold text-[#7FF252]">{project.roi}</span>
+                    <span className="text-muted-foreground">ATH ROI:</span>
+                    <span className="font-bold text-primary">{project.roi}</span>
                   </div>
                 </div>
               </Link>

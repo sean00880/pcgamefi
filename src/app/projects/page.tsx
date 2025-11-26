@@ -46,32 +46,32 @@ export default function ProjectsPage() {
   const hasActiveFilters = searchQuery || statusFilter !== 'All' || categoryFilter !== 'All';
 
   return (
-    <main className="min-h-screen bg-[#E8E5D5]">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Header */}
-      <div className="bg-[#1A1C1E] text-white py-16 md:py-24">
+      <div className="bg-foreground text-background py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-6xl font-bold display-font mb-4">All Projects</h1>
-          <p className="text-gray-400 text-lg max-w-2xl">
+          <p className="text-muted-foreground text-lg max-w-2xl">
             Explore IGO opportunities across gaming, DeFi, metaverse and more. Find your next investment.
           </p>
         </div>
       </div>
 
       {/* Filters Section */}
-      <div className="sticky top-16 md:top-20 z-30 bg-[#E8E5D5] border-b border-gray-300 shadow-sm">
+      <div className="sticky top-16 md:top-20 z-30 bg-background border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-wrap gap-4 items-center">
             {/* Search Input */}
             <div className="relative flex-1 min-w-[200px]">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
               <input
                 type="text"
                 placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7FF252] focus:border-transparent bg-white"
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-card text-card-foreground"
               />
             </div>
 
@@ -83,8 +83,8 @@ export default function ProjectsPage() {
                   onClick={() => setStatusFilter(status)}
                   className={`px-4 py-2 rounded-lg font-semibold text-sm transition-colors ${
                     statusFilter === status
-                      ? 'bg-black text-white'
-                      : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                      ? 'bg-foreground text-background'
+                      : 'bg-card border border-border text-foreground hover:bg-muted'
                   }`}
                 >
                   {status}
@@ -95,12 +95,12 @@ export default function ProjectsPage() {
             {/* Filter Toggle - Mobile */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="md:hidden flex items-center gap-2 px-4 py-2.5 rounded-lg border border-gray-300 bg-white"
+              className="md:hidden flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-foreground"
             >
               <Filter size={18} />
               Filters
               {hasActiveFilters && (
-                <span className="w-2 h-2 rounded-full bg-[#7FF252]"></span>
+                <span className="w-2 h-2 rounded-full bg-primary"></span>
               )}
             </button>
 
@@ -108,7 +108,7 @@ export default function ProjectsPage() {
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
-                className="flex items-center gap-1 text-sm text-gray-600 hover:text-black"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
               >
                 <X size={16} />
                 Clear
@@ -118,9 +118,9 @@ export default function ProjectsPage() {
 
           {/* Mobile Filters Dropdown */}
           {showFilters && (
-            <div className="md:hidden mt-4 p-4 bg-white rounded-lg border border-gray-200 space-y-4 animate-fade-in">
+            <div className="md:hidden mt-4 p-4 bg-card rounded-lg border border-border space-y-4 animate-fade-in">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">Status</label>
                 <div className="flex flex-wrap gap-2">
                   {(['All', 'Live', 'Upcoming', 'Ended'] as StatusFilter[]).map(status => (
                     <button
@@ -128,8 +128,8 @@ export default function ProjectsPage() {
                       onClick={() => setStatusFilter(status)}
                       className={`px-3 py-1.5 rounded text-sm font-medium ${
                         statusFilter === status
-                          ? 'bg-black text-white'
-                          : 'bg-gray-100 text-gray-700'
+                          ? 'bg-foreground text-background'
+                          : 'bg-muted text-foreground'
                       }`}
                     >
                       {status}
@@ -139,7 +139,7 @@ export default function ProjectsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">Category</label>
                 <div className="flex flex-wrap gap-2">
                   {CATEGORIES.map(cat => (
                     <button
@@ -147,8 +147,8 @@ export default function ProjectsPage() {
                       onClick={() => setCategoryFilter(cat)}
                       className={`px-3 py-1.5 rounded text-sm font-medium ${
                         categoryFilter === cat
-                          ? 'bg-[#7FF252] text-black'
-                          : 'bg-gray-100 text-gray-700'
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-muted text-foreground'
                       }`}
                     >
                       {cat}
@@ -167,8 +167,8 @@ export default function ProjectsPage() {
                 onClick={() => setCategoryFilter(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                   categoryFilter === cat
-                    ? 'bg-[#7FF252] text-black'
-                    : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-400'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-card border border-border text-muted-foreground hover:border-foreground/50'
                 }`}
               >
                 {cat}
@@ -182,7 +182,7 @@ export default function ProjectsPage() {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Results Count */}
-          <p className="text-gray-500 mb-6">
+          <p className="text-muted-foreground mb-6">
             Showing {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
           </p>
 
@@ -193,10 +193,10 @@ export default function ProjectsPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-20 bg-white rounded-2xl border border-gray-200">
+            <div className="text-center py-20 bg-card rounded-2xl border border-border">
               <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">No projects found</h3>
-              <p className="text-gray-500 mb-6">Try adjusting your filters or search query</p>
+              <h3 className="text-xl font-bold text-foreground mb-2">No projects found</h3>
+              <p className="text-muted-foreground mb-6">Try adjusting your filters or search query</p>
               <Button onClick={clearFilters} variant="outline">
                 Clear All Filters
               </Button>

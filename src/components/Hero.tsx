@@ -21,43 +21,44 @@ interface SlideData {
   icon: React.ElementType;
 }
 
+// Slides use CSS variables defined in globals.css for consistent theming
 const SLIDES: SlideData[] = [
   {
     id: 'quantum',
-    title: <>Next-Gen <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7FF252] to-emerald-400">Launchpad</span></>,
+    title: <>Next-Gen <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Launchpad</span></>,
     subtitle: "Access high-quality IGOs through our quantum-tier allocation system. Fair, transparent, and built for the future of Web3 gaming.",
     tag: "GameFi Core",
     colors: {
-      primary: '#7FF252',
-      secondary: '#6FD638',
-      bg: '#020602',
-      accent: 'rgba(127, 242, 82, 0.15)'
+      primary: 'var(--slide-quantum-primary)',
+      secondary: 'var(--slide-quantum-secondary)',
+      bg: 'var(--slide-quantum-bg)',
+      accent: 'var(--slide-quantum-accent)'
     },
     icon: Rocket
   },
   {
     id: 'agi',
-    title: <>AI-Powered <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Scout</span></>,
+    title: <>AI-Powered <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-blue-500">Scout</span></>,
     subtitle: "Leverage our proprietary neural networks to analyze project metrics, tokenomics, and community sentiment in real-time.",
     tag: "Smart Analysis",
     colors: {
-      primary: '#22D3EE',
-      secondary: '#3B82F6',
-      bg: '#040B14',
-      accent: 'rgba(34, 211, 238, 0.15)'
+      primary: 'var(--slide-agi-primary)',
+      secondary: 'var(--slide-agi-secondary)',
+      bg: 'var(--slide-agi-bg)',
+      accent: 'var(--slide-agi-accent)'
     },
     icon: BrainCircuit
   },
   {
     id: 'compute',
-    title: <>Staking & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-500">Rewards</span></>,
+    title: <>Staking & <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-fuchsia-500">Rewards</span></>,
     subtitle: "Maximize your yield by staking $PC tokens. Power the ecosystem's compute layer and earn passive income from platform fees.",
     tag: "Infrastructure",
     colors: {
-      primary: '#C084FC',
-      secondary: '#D946EF',
-      bg: '#0F0318',
-      accent: 'rgba(192, 132, 252, 0.15)'
+      primary: 'var(--slide-compute-primary)',
+      secondary: 'var(--slide-compute-secondary)',
+      bg: 'var(--slide-compute-bg)',
+      accent: 'var(--slide-compute-accent)'
     },
     icon: Coins
   }
@@ -416,7 +417,7 @@ export const Hero: React.FC = () => {
             {current.title}
           </h1>
 
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed font-light">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/70 mb-10 max-w-2xl leading-relaxed font-light">
             {current.subtitle}
           </p>
 

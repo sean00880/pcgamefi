@@ -3,8 +3,14 @@
 @theme {
   /* Color palette */
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
@@ -13,6 +19,21 @@
   --color-card-foreground: var(--card-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Slide colors for Hero */
+  --color-slide-quantum-primary: var(--slide-quantum-primary);
+  --color-slide-quantum-bg: var(--slide-quantum-bg);
+  --color-slide-agi-primary: var(--slide-agi-primary);
+  --color-slide-agi-bg: var(--slide-agi-bg);
+  --color-slide-compute-primary: var(--slide-compute-primary);
+  --color-slide-compute-bg: var(--slide-compute-bg);
+
+  /* Status colors */
+  --color-status-live: var(--status-live);
+  --color-status-upcoming: var(--status-upcoming);
+  --color-status-ended: var(--status-ended);
 
   /* Typography */
   --font-sans: "Rajdhani", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -50,8 +71,14 @@
 
   /* Brand Colors */
   --primary: #7ff252; /* Quantum Green */
+  --primary-hover: #6fd638;
+  --primary-foreground: #000000;
   --secondary: #22d3ee; /* AGI Blue */
+  --secondary-hover: #3b82f6;
+  --secondary-foreground: #000000;
   --accent: #c084fc; /* Compute Purple */
+  --accent-hover: #d946ef;
+  --accent-foreground: #000000;
 
   /* UI Colors */
   --muted: #d4d1c1;
@@ -60,11 +87,35 @@
   --card-foreground: #1a1c1e;
   --border: #d4d1c1;
   --input: #d4d1c1;
+  --popover: #ffffff;
+  --popover-foreground: #1a1c1e;
+
+  /* Slide Theme Colors - Quantum (Green) */
+  --slide-quantum-primary: #7ff252;
+  --slide-quantum-secondary: #6fd638;
+  --slide-quantum-bg: #020602;
+  --slide-quantum-accent: rgba(127, 242, 82, 0.15);
+
+  /* Slide Theme Colors - AGI (Blue) */
+  --slide-agi-primary: #22d3ee;
+  --slide-agi-secondary: #3b82f6;
+  --slide-agi-bg: #040b14;
+  --slide-agi-accent: rgba(34, 211, 238, 0.15);
+
+  /* Slide Theme Colors - Compute (Purple) */
+  --slide-compute-primary: #c084fc;
+  --slide-compute-secondary: #d946ef;
+  --slide-compute-bg: #0f0318;
+  --slide-compute-accent: rgba(192, 132, 252, 0.15);
 
   /* Status */
   --status-live: #7ff252;
   --status-upcoming: #ffa500;
   --status-ended: #9ca3af;
+
+  /* Shadows */
+  --shadow-primary: rgba(0, 0, 0, 1);
+  --shadow-secondary: rgba(0, 0, 0, 0.5);
 }
 
 .dark {
@@ -74,16 +125,28 @@
 
   /* Brand Colors - Adjusted for Dark Mode if needed, but keeping vibrant */
   --primary: #7ff252;
+  --primary-hover: #6fd638;
+  --primary-foreground: #000000;
   --secondary: #22d3ee;
+  --secondary-hover: #3b82f6;
+  --secondary-foreground: #000000;
   --accent: #c084fc;
+  --accent-hover: #d946ef;
+  --accent-foreground: #000000;
 
   /* UI Colors */
   --muted: #1a1c1e;
   --muted-foreground: #9ca3af;
   --card: #0a0f0a;
   --card-foreground: #ffffff;
-  --border: #1a1c1e;
+  --border: #1f2937;
   --input: #1a1c1e;
+  --popover: #0a0f0a;
+  --popover-foreground: #ffffff;
+
+  /* Shadows for dark mode */
+  --shadow-primary: rgba(127, 242, 82, 0.3);
+  --shadow-secondary: rgba(127, 242, 82, 0.15);
 }
 
 /* Base Styles */

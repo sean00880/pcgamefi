@@ -62,7 +62,7 @@ export const AiAssistant: React.FC = () => {
               <Bot size={20} className="text-primary" />
               <span className="font-bold display-font">GameFi AI Scout</span>
             </div>
-            <button onClick={() => setIsOpen(false)} className="hover:text-gray-300 transition-colors">
+            <button onClick={() => setIsOpen(false)} className="hover:text-muted-foreground transition-colors">
               <X size={20} />
             </button>
           </div>
@@ -79,9 +79,9 @@ export const AiAssistant: React.FC = () => {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="bg-card border border-border p-3 rounded-2xl rounded-tl-none flex gap-1">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
-                  <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+                  <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></span>
+                  <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
+                  <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
                 </div>
               </div>
             )}

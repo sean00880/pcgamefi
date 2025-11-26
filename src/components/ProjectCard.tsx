@@ -74,8 +74,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
         <div className="space-y-3 mb-6">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Total Raise</span>
-            <span className="font-bold font-mono">${project.totalRaise.toLocaleString()}</span>
+            <span className="text-muted-foreground">Total Raise</span>
+            <span className="font-bold font-mono text-card-foreground">${project.totalRaise.toLocaleString()}</span>
           </div>
 
           {project.status !== 'Upcoming' && (

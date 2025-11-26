@@ -44,9 +44,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const progress = project.totalRaise > 0 ? (project.currentRaise / project.totalRaise) * 100 : 0;
 
   const statusColors: Record<string, string> = {
-    Live: "bg-[#7FF252] text-black",
-    Upcoming: "bg-orange-500 text-white",
-    Ended: "bg-gray-500 text-white",
+    Live: "bg-primary text-primary-foreground",
+    Upcoming: "bg-status-upcoming text-white",
+    Ended: "bg-muted text-muted-foreground",
   };
 
   const statusIcons: Record<string, React.ReactNode> = {
@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#E8E5D5]">
+    <main className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Image */}
@@ -68,7 +68,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1C1E] via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground via-black/50 to-transparent" />
 
         {/* Back Button */}
         <div className="absolute left-4 top-4 z-10">
@@ -109,7 +109,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <h1 className="display-font mb-2 text-4xl font-bold text-white md:text-6xl">
               {project.name}
             </h1>
-            <p className="font-mono text-2xl text-gray-300">${project.ticker}</p>
+            <p className="font-mono text-2xl text-white/70">${project.ticker}</p>
           </div>
         </div>
       </div>
@@ -120,12 +120,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {/* Left Column - Details */}
           <div className="space-y-8 lg:col-span-2">
             {/* Description */}
-            <div className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
-              <h2 className="display-font mb-4 text-2xl font-bold">About</h2>
-              <p className="text-lg leading-relaxed text-gray-600">{project.description}</p>
+            <div className="rounded-2xl bg-card p-6 shadow-sm md:p-8">
+              <h2 className="display-font mb-4 text-2xl font-bold text-card-foreground">About</h2>
+              <p className="text-lg leading-relaxed text-muted-foreground">{project.description}</p>
 
               {/* Links */}
-              <div className="mt-6 flex flex-wrap gap-3 border-t border-gray-100 pt-6">
+              <div className="mt-6 flex flex-wrap gap-3 border-t border-border pt-6">
                 {project.website && (
                   <a href={project.website} target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="sm">
@@ -154,48 +154,48 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <ProjectAnalysis projectName={project.name} projectDescription={project.description} />
 
             {/* Key Information */}
-            <div className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
-              <h2 className="display-font mb-6 text-2xl font-bold">Key Information</h2>
+            <div className="rounded-2xl bg-card p-6 shadow-sm md:p-8">
+              <h2 className="display-font mb-6 text-2xl font-bold text-card-foreground">Key Information</h2>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
-                    <Target className="h-6 w-6 text-gray-600" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted">
+                    <Target className="h-6 w-6 text-muted-foreground" />
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">Blockchain</span>
-                    <p className="text-lg font-bold">{project.blockchain || "Multi-chain"}</p>
+                    <span className="text-sm text-muted-foreground">Blockchain</span>
+                    <p className="text-lg font-bold text-card-foreground">{project.blockchain || "Multi-chain"}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
-                    <Calendar className="h-6 w-6 text-gray-600" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted">
+                    <Calendar className="h-6 w-6 text-muted-foreground" />
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">Start Date</span>
-                    <p className="text-lg font-bold">{project.startDate || "TBA"}</p>
+                    <span className="text-sm text-muted-foreground">Start Date</span>
+                    <p className="text-lg font-bold text-card-foreground">{project.startDate || "TBA"}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
-                    <Users className="h-6 w-6 text-gray-600" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted">
+                    <Users className="h-6 w-6 text-muted-foreground" />
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">Participants</span>
-                    <p className="text-lg font-bold">
+                    <span className="text-sm text-muted-foreground">Participants</span>
+                    <p className="text-lg font-bold text-card-foreground">
                       {project.participants > 0 ? project.participants.toLocaleString() : "TBA"}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
-                    <Shield className="h-6 w-6 text-gray-600" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-muted">
+                    <Shield className="h-6 w-6 text-muted-foreground" />
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">KYC Required</span>
-                    <p className="text-lg font-bold">{project.kycRequired ? "Yes" : "No"}</p>
+                    <span className="text-sm text-muted-foreground">KYC Required</span>
+                    <p className="text-lg font-bold text-card-foreground">{project.kycRequired ? "Yes" : "No"}</p>
                   </div>
                 </div>
               </div>
@@ -204,19 +204,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           {/* Right Column - Stats Card */}
           <div className="space-y-6">
-            <div className="sticky top-24 rounded-2xl bg-white p-6 shadow-sm">
-              <h3 className="display-font mb-6 text-lg font-bold">Raise Details</h3>
+            <div className="sticky top-24 rounded-2xl bg-card p-6 shadow-sm">
+              <h3 className="display-font mb-6 text-lg font-bold text-card-foreground">Raise Details</h3>
 
               {/* Progress Bar */}
               {project.status !== "Upcoming" && (
                 <div className="mb-6">
                   <div className="mb-2 flex justify-between text-sm">
-                    <span className="text-gray-500">Progress</span>
-                    <span className="font-bold">{progress.toFixed(1)}%</span>
+                    <span className="text-muted-foreground">Progress</span>
+                    <span className="font-bold text-card-foreground">{progress.toFixed(1)}%</span>
                   </div>
-                  <div className="h-3 w-full overflow-hidden rounded-full bg-gray-100">
+                  <div className="h-3 w-full overflow-hidden rounded-full bg-muted">
                     <div
-                      className="h-full rounded-full bg-[#7FF252] transition-all duration-500"
+                      className="h-full rounded-full bg-primary transition-all duration-500"
                       style={{ width: `${progress}%` }}
                     />
                   </div>
@@ -225,34 +225,34 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
               {/* Stats */}
               <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-gray-100 py-3">
-                  <span className="text-gray-500">Total Raise</span>
-                  <span className="font-mono text-lg font-bold">
+                <div className="flex items-center justify-between border-b border-border py-3">
+                  <span className="text-muted-foreground">Total Raise</span>
+                  <span className="font-mono text-lg font-bold text-card-foreground">
                     ${project.totalRaise.toLocaleString()}
                   </span>
                 </div>
 
                 {project.status !== "Upcoming" && (
-                  <div className="flex items-center justify-between border-b border-gray-100 py-3">
-                    <span className="text-gray-500">Current Raised</span>
-                    <span className="font-mono text-lg font-bold text-[#7FF252]">
+                  <div className="flex items-center justify-between border-b border-border py-3">
+                    <span className="text-muted-foreground">Current Raised</span>
+                    <span className="font-mono text-lg font-bold text-primary">
                       ${project.currentRaise.toLocaleString()}
                     </span>
                   </div>
                 )}
 
                 {project.roi !== "TBA" && (
-                  <div className="flex items-center justify-between border-b border-gray-100 py-3">
-                    <span className="text-gray-500">ATH ROI</span>
-                    <span className="font-mono text-2xl font-bold text-[#7FF252]">{project.roi}</span>
+                  <div className="flex items-center justify-between border-b border-border py-3">
+                    <span className="text-muted-foreground">ATH ROI</span>
+                    <span className="font-mono text-2xl font-bold text-primary">{project.roi}</span>
                   </div>
                 )}
 
                 <div className="flex items-center justify-between py-3">
-                  <span className="text-gray-500">Categories</span>
+                  <span className="text-muted-foreground">Categories</span>
                   <div className="flex flex-wrap justify-end gap-1">
                     {project.category.map((cat) => (
-                      <span key={cat} className="rounded bg-gray-100 px-2 py-1 text-xs">
+                      <span key={cat} className="rounded bg-muted px-2 py-1 text-xs text-muted-foreground">
                         {cat}
                       </span>
                     ))}
