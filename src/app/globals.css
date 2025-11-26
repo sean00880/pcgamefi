@@ -69,10 +69,10 @@
   --background: #e8e5d5; /* Cream */
   --foreground: #1a1c1e; /* Dark Charcoal */
 
-  /* Brand Colors */
-  --primary: #7ff252; /* Quantum Green */
-  --primary-hover: #6fd638;
-  --primary-foreground: #000000;
+  /* Brand Colors - Darker green for light mode contrast on cream */
+  --primary: #16a34a; /* Green 600 - better contrast on cream background */
+  --primary-hover: #15803d;
+  --primary-foreground: #ffffff;
   --secondary: #22d3ee; /* AGI Blue */
   --secondary-hover: #3b82f6;
   --secondary-foreground: #000000;

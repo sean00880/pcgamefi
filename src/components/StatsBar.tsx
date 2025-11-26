@@ -8,7 +8,7 @@ export const StatsBar: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-background/20">
           <div className="flex flex-col items-center md:items-start md:pl-8">
             <span className="text-background/60 text-sm font-medium uppercase tracking-wider mb-1">ATH Avg ROI</span>
-            <span className="text-4xl md:text-5xl font-bold display-font text-primary">{STATS.athRoi}</span>
+            <span className="text-4xl md:text-5xl font-bold display-font text-primary dark:text-green-600">{STATS.athRoi}</span>
           </div>
           <div className="flex flex-col items-center md:items-start md:pl-8 pt-8 md:pt-0">
             <span className="text-background/60 text-sm font-medium uppercase tracking-wider mb-1">Total Raised</span>
