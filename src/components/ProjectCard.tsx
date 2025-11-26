@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Sparkles, ExternalLink } from 'lucide-react';
 import { Button } from './Button';
-import { Project } from '@/lib/types';
+import type { Project } from '@/lib/types';
 import { analyzeProject } from '@/actions/ai';
 
 interface ProjectCardProps {
@@ -30,13 +30,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const progress = project.totalRaise > 0 ? (project.currentRaise / project.totalRaise) * 100 : 0;
 
   const statusColors = {
-    'Live': 'bg-[#7FF252] text-black',
-    'Upcoming': 'bg-orange-500 text-white',
-    'Ended': 'bg-gray-500 text-white'
+    'Live': 'bg-primary text-primary-foreground',
+    'Upcoming': 'bg-yellow-500 text-white',
+    'Ended': 'bg-muted text-muted-foreground'
   };
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full group">
+    <div className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 flex flex-col h-full group">
       <div className="relative h-48 overflow-hidden">
         <Image
           src={project.imageUrl}
@@ -51,7 +51,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </span>
         </div>
         {project.blockchain && (
-          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-semibold">
+          <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-semibold text-foreground">
             {project.blockchain}
           </div>
         )}
@@ -60,17 +60,17 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className="p-6 flex-1 flex flex-col">
         <div className="flex justify-between items-start mb-2">
           <div>
-            <h3 className="text-xl font-bold display-font text-gray-900">{project.name}</h3>
-            <p className="text-sm font-mono text-gray-500">${project.ticker}</p>
+            <h3 className="text-xl font-bold display-font text-card-foreground">{project.name}</h3>
+            <p className="text-sm font-mono text-muted-foreground">${project.ticker}</p>
           </div>
           <div className="flex gap-1 flex-wrap justify-end">
             {project.category.slice(0, 2).map(cat => (
-              <span key={cat} className="text-[10px] bg-gray-100 px-2 py-1 rounded text-gray-600 font-semibold uppercase">{cat}</span>
+              <span key={cat} className="text-[10px] bg-muted px-2 py-1 rounded text-muted-foreground font-semibold uppercase">{cat}</span>
             ))}
           </div>
         </div>
 
-        <p className="text-gray-600 text-sm mb-6 line-clamp-2">{project.description}</p>
+        <p className="text-muted-foreground text-sm mb-6 line-clamp-2">{project.description}</p>
 
         <div className="space-y-3 mb-6">
           <div className="flex justify-between text-sm">
@@ -80,23 +80,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
           {project.status !== 'Upcoming' && (
             <div className="flex justify-between text-sm">
-              <span className="text-gray-500">Raised</span>
-              <span className="font-bold font-mono text-[#7FF252]">${project.currentRaise.toLocaleString()}</span>
+              <span className="text-muted-foreground">Raised</span>
+              <span className="font-bold font-mono text-primary">${project.currentRaise.toLocaleString()}</span>
             </div>
           )}
 
           {project.roi !== 'TBA' && (
             <div className="flex justify-between text-sm">
-              <span className="text-gray-500">ROI</span>
-              <span className="font-bold font-mono text-[#7FF252]">{project.roi}</span>
+              <span className="text-muted-foreground">ROI</span>
+              <span className="font-bold font-mono text-primary">{project.roi}</span>
             </div>
           )}
         </div>
 
         {project.status === 'Live' && (
-          <div className="w-full bg-gray-100 h-2 rounded-full mb-6 overflow-hidden">
+          <div className="w-full bg-muted h-2 rounded-full mb-6 overflow-hidden">
             <div
-              className="bg-[#7FF252] h-full rounded-full transition-all duration-500"
+              className="bg-primary h-full rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -112,7 +112,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <button
             onClick={handleAnalyze}
             disabled={loading}
-            className="flex items-center justify-center w-full text-xs text-gray-500 hover:text-black py-2 gap-1 transition-colors"
+            className="flex items-center justify-center w-full text-xs text-muted-foreground hover:text-foreground py-2 gap-1 transition-colors"
           >
             <Sparkles size={14} />
             {loading ? 'Analyzing...' : 'AI Quick Analysis'}
@@ -120,7 +120,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
 
         {analysis && (
-          <div className="mt-4 bg-gray-50 p-3 rounded-lg text-xs text-gray-700 border border-gray-200 animate-fade-in">
+          <div className="mt-4 bg-muted/50 p-3 rounded-lg text-xs text-muted-foreground border border-border animate-fade-in">
             <span className="font-bold block mb-1">AI Analysis:</span>
             {analysis}
           </div>

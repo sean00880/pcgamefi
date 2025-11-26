@@ -104,7 +104,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
     const particles: any[] = [];
 
     if (theme === 'quantum') {
-      for(let i=0; i<300; i++) {
+      for (let i = 0; i < 300; i++) {
         particles.push({
           angle: Math.random() * Math.PI * 2,
           radius: 30 + Math.random() * 100,
@@ -114,7 +114,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
         });
       }
     } else if (theme === 'agi') {
-      for(let i=0; i<80; i++) {
+      for (let i = 0; i < 80; i++) {
         const theta = Math.random() * 2 * Math.PI;
         const phi = Math.acos((Math.random() * 2) - 1);
         const r = 250 + Math.random() * 50;
@@ -129,8 +129,8 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
     } else if (theme === 'compute') {
       const gridSize = 14;
       const spacing = 40;
-      for(let x = -gridSize; x <= gridSize; x++) {
-        for(let z = -gridSize; z <= gridSize; z++) {
+      for (let x = -gridSize; x <= gridSize; x++) {
+        for (let z = -gridSize; z <= gridSize; z++) {
           if (Math.abs(x) + Math.abs(z) < gridSize + 5) {
             particles.push({
               gridX: x,
@@ -138,7 +138,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
               x: x * spacing,
               z: z * spacing,
               y: 0,
-              offset: Math.sqrt(x*x + z*z)
+              offset: Math.sqrt(x * x + z * z)
             });
           }
         }
@@ -150,7 +150,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
       const time = timeRef.current;
 
       ctx.fillStyle = theme === 'quantum' ? '#020602' :
-                     theme === 'agi' ? '#040B14' : '#0F0318';
+        theme === 'agi' ? '#040B14' : '#0F0318';
       ctx.fillRect(0, 0, width, height);
 
       ctx.save();
@@ -207,7 +207,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
             const alpha = (proj.scale - 0.5) * 2;
             ctx.fillStyle = p.colorVar > 0.5 ? `rgba(127, 242, 82, ${alpha})` : `rgba(111, 214, 56, ${alpha})`;
             ctx.beginPath();
-            ctx.arc(proj.x, proj.y, (1.5 * proj.scale) + (Math.sin(time * 5 + i)*0.5), 0, Math.PI * 2);
+            ctx.arc(proj.x, proj.y, (1.5 * proj.scale) + (Math.sin(time * 5 + i) * 0.5), 0, Math.PI * 2);
             ctx.fill();
           }
         });
@@ -252,7 +252,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
             const n2 = projectedNodes[j];
             const dx = n1.x - n2.x;
             const dy = n1.y - n2.y;
-            const distSq = dx*dx + dy*dy;
+            const distSq = dx * dx + dy * dy;
 
             if (distSq < 15000 && n1.scale > 0 && n2.scale > 0) {
               ctx.strokeStyle = `rgba(34, 211, 238, ${0.05 * n1.scale})`;
@@ -291,7 +291,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
         const tilt = 0.6;
 
         particles.forEach(p => {
-          const dist = Math.sqrt(p.gridX*p.gridX + p.gridZ*p.gridZ);
+          const dist = Math.sqrt(p.gridX * p.gridX + p.gridZ * p.gridZ);
           const h = Math.sin(dist * 0.3 - time * 2) * 20 + Math.sin(p.gridX * 0.5 + time) * 15;
 
           let x = p.x;
@@ -310,7 +310,7 @@ const HeroCanvas: React.FC<{ theme: Theme }> = ({ theme }) => {
 
           if (proj.scale > 0) {
             const hue = 270 + (h * 2);
-            const colorTop = `hsla(${hue}, 80%, 60%, ${0.2 + (h+40)/100})`;
+            const colorTop = `hsla(${hue}, 80%, 60%, ${0.2 + (h + 40) / 100})`;
             const colorSide = `hsla(${hue}, 60%, 30%, ${0.5})`;
             const colorEdge = `hsla(${hue}, 90%, 70%, 0.8)`;
 
@@ -375,13 +375,13 @@ export const Hero: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide, prevSlide]);
 
-  const current = SLIDES[activeSlide];
+  const current = SLIDES[activeSlide]!;
   const Icon = current.icon;
 
   const openSocial = (url: string) => window.open(url, '_blank');
 
   return (
-    <div className="relative h-[700px] md:h-[800px] w-full overflow-hidden bg-black text-white transition-colors duration-1000" style={{ backgroundColor: current.colors.bg }}>
+    <div className="relative h-[700px] md:h-[800px] w-full overflow-hidden bg-background text-foreground transition-colors duration-1000" style={{ backgroundColor: current.colors.bg }}>
 
       <div className="absolute inset-0 z-0">
         <HeroCanvas theme={current.id} />
@@ -393,7 +393,7 @@ export const Hero: React.FC = () => {
           background: `linear-gradient(to right, ${current.colors.bg} 10%, rgba(0,0,0,0.6) 50%, transparent 100%)`
         }}
       ></div>
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
 
       <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
 
@@ -432,7 +432,7 @@ export const Hero: React.FC = () => {
             >
               Explore Ecosystem <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" size="lg" className="min-w-[160px] text-white border-white/30 hover:bg-white/10 hover:border-white">
+            <Button variant="outline" size="lg" className="min-w-[160px] text-foreground border-foreground/30 hover:bg-foreground/10 hover:border-foreground">
               Whitepaper
             </Button>
           </div>
@@ -459,9 +459,8 @@ export const Hero: React.FC = () => {
             <button
               key={idx}
               onClick={() => setActiveSlide(idx)}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                idx === activeSlide ? 'w-12 opacity-100' : 'w-2 opacity-30 hover:opacity-60'
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${idx === activeSlide ? 'w-12 opacity-100' : 'w-2 opacity-30 hover:opacity-60'
+                }`}
               style={{ backgroundColor: current.colors.primary }}
               aria-label={`Go to slide ${idx + 1}`}
             />

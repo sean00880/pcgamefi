@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot } from 'lucide-react';
 import { chatWithAi } from '@/actions/ai';
-import { ChatMessage } from '@/lib/types';
+import type { ChatMessage } from '@/lib/types';
 
 export const AiAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +47,7 @@ export const AiAssistant: React.FC = () => {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-40 bg-black text-[#7FF252] p-4 rounded-full shadow-2xl hover:scale-110 transition-transform ${isOpen ? 'hidden' : 'flex'}`}
+        className={`fixed bottom-6 right-6 z-40 bg-foreground text-background p-4 rounded-full shadow-2xl hover:scale-110 transition-transform ${isOpen ? 'hidden' : 'flex'}`}
         aria-label="Open AI Assistant"
       >
         <MessageSquare size={24} />
@@ -55,11 +55,11 @@ export const AiAssistant: React.FC = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-[350px] md:w-[400px] h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden animate-fade-in">
+        <div className="fixed bottom-6 right-6 z-50 w-[350px] md:w-[400px] h-[500px] bg-background rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden animate-fade-in">
           {/* Header */}
-          <div className="bg-[#1A1C1E] p-4 flex justify-between items-center text-white">
+          <div className="bg-card p-4 flex justify-between items-center text-card-foreground border-b border-border">
             <div className="flex items-center gap-2">
-              <Bot size={20} className="text-[#7FF252]" />
+              <Bot size={20} className="text-primary" />
               <span className="font-bold display-font">GameFi AI Scout</span>
             </div>
             <button onClick={() => setIsOpen(false)} className="hover:text-gray-300 transition-colors">
@@ -68,17 +68,17 @@ export const AiAssistant: React.FC = () => {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/30">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === 'user' ? 'bg-[#7FF252] text-black rounded-tr-none' : 'bg-white border border-gray-200 rounded-tl-none'}`}>
+                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === 'user' ? 'bg-primary text-primary-foreground rounded-tr-none' : 'bg-card border border-border rounded-tl-none text-card-foreground'}`}>
                   {msg.text}
                 </div>
               </div>
             ))}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-white border border-gray-200 p-3 rounded-2xl rounded-tl-none flex gap-1">
+                <div className="bg-card border border-border p-3 rounded-2xl rounded-tl-none flex gap-1">
                   <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
                   <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
                   <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
@@ -89,19 +89,19 @@ export const AiAssistant: React.FC = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 bg-white border-t border-gray-100 flex gap-2">
+          <div className="p-4 bg-card border-t border-border flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Ask about tokenomics, IDOs..."
-              className="flex-1 bg-gray-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#7FF252]"
+              className="flex-1 bg-muted rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
             />
             <button
               onClick={handleSend}
               disabled={isTyping}
-              className="bg-black text-white p-2 rounded-lg hover:bg-gray-800 disabled:opacity-50 transition-colors"
+              className="bg-primary text-primary-foreground p-2 rounded-lg hover:bg-primary/90 disabled:opacity-50 transition-colors"
             >
               <Send size={18} />
             </button>

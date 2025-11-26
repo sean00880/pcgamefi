@@ -1,4 +1,4 @@
-import { Project, SocialLink, TokenomicsData, StatsData } from './types';
+import type { Project, SocialLink, TokenomicsData, StatsData } from './types';
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { platform: 'Twitter', url: 'https://x.com/pcgamefi' },
