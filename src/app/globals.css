@@ -82,7 +82,7 @@
 
   /* UI Colors */
   --muted: #d4d1c1;
-  --muted-foreground: #4b5563;
+  --muted-foreground: #374151; /* Gray 700 - better contrast on cream */
   --card: #f0ede0;
   --card-foreground: #1a1c1e;
   --border: #d4d1c1;

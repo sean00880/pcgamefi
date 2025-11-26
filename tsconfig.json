@@ -13,7 +13,7 @@
     "moduleResolution": "bundler",
     "moduleDetection": "force",
     // JSX for React 19
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     // Strict type checking
     "strict": true,
     "noUncheckedIndexedAccess": true,

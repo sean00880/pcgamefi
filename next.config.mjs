@@ -1,15 +1,5 @@
-import type { NextConfig } from "next";
-import { resolve } from "path";
-
-const nextConfig: NextConfig = {
-  // Enable React Compiler (stable in Next 16)
-  reactCompiler: true,
-
-  // Turbopack configuration
-  turbopack: {
-    // Set root to this project directory to avoid workspace detection issues
-    root: resolve(__dirname),
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
 
   // Image optimization
   images: {
@@ -38,7 +28,6 @@ const nextConfig: NextConfig = {
 
   // TypeScript strict mode
   typescript: {
-    // Dangerously allow builds with type errors (set to false for strict)
     ignoreBuildErrors: false,
   },
 
