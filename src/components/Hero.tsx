@@ -394,7 +394,7 @@ export const Hero: React.FC = () => {
           background: `linear-gradient(to right, ${current.colors.bg} 10%, rgba(0,0,0,0.6) 50%, transparent 100%)`
         }}
       ></div>
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
 
       <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
 
