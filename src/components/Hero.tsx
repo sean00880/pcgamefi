@@ -413,7 +413,7 @@ export const Hero: React.FC = () => {
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 display-font tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 display-font tracking-tight text-white">
             {current.title}
           </h1>
 
@@ -433,7 +433,7 @@ export const Hero: React.FC = () => {
             >
               Explore Ecosystem <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" size="lg" className="min-w-[160px] text-foreground border-foreground/30 hover:bg-foreground/10 hover:border-foreground">
+            <Button variant="outline" size="lg" className="min-w-[160px] text-white border-white/30 hover:bg-white/10 hover:border-white">
               Whitepaper
             </Button>
           </div>
